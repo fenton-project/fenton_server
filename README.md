@@ -10,23 +10,23 @@ Not recommended at this time
 
 * Getting started
 ```
-git clone git@github.com:fenton-project/fenton-server.git
-cd fenton-server
+git clone git@github.com:fenton-project/fenton_server.git
+cd fenton_server
 bundle install
 bundle exec rackup
 ```
 
 * Ruby version
 
-See Gemfile
+  See Gemfile
 
 * System dependencies
 
-None
+  None
 
 * Configuration
 
-None
+  None
 
 * Database creation & initialization
 ```
@@ -34,14 +34,13 @@ bundle exec rake db:setup
 ```
 
 * How to run the test suite
-
 ```
 bundle exec rake test
 ```
 
 * Services (job queues, cache servers, search engines, etc.)
 
-None
+  None
 
 ## Contributing
 
@@ -57,7 +56,7 @@ None
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | Nick Willever (<nickwillever@gmail.com>) |
-| **Copyright:**       | Copyright (c) 2016 Nick Willever         |
+| **Copyright:**       | Copyright (c) 2013-2016 Nick Willever    |
 | **License:**         | Apache License, Version 2.0              |
 
 Licensed under the Apache License, Version 2.0 (the "License");
