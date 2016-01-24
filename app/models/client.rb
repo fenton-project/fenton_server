@@ -11,6 +11,6 @@ class Client < ApplicationRecord
   protected
 
   def validate_public_key
-    SSHKey.valid_ssh_public_key?(self.public_key)
+    SSHKey.valid_ssh_public_key?(public_key)
   end
 end

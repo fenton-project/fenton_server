@@ -10,3 +10,5 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r

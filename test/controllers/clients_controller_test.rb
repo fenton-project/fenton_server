@@ -11,33 +11,43 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should route to a client' do
     assert_routing '/clients/1', controller: 'clients',
-                                  action: 'show', id: '1'
+                                 action: 'show', id: '1'
   end
 
-  test "should get index" do
+  test 'should get index' do
     get clients_url
     assert_response :success
   end
 
-  test "should create client" do
+  test 'should create client' do
     assert_difference('Client.count') do
-      post clients_url, params: { client: { name: @client.name, public_key: @client.public_key } }
+      post clients_url, params: {
+        client: {
+          name: @client.name,
+          public_key: @client.public_key
+        }
+      }
     end
 
     assert_response 201
   end
 
-  test "should show client" do
+  test 'should show client' do
     get client_url(@client)
     assert_response :success
   end
 
-  test "should update client" do
-    patch client_url(@client), params: { client: { name: @client.name, public_key: @client.public_key } }
+  test 'should update client' do
+    patch client_url(@client), params: {
+      client: {
+        name: @client.name,
+        public_key: @client.public_key
+      }
+    }
     assert_response 200
   end
 
-  test "should destroy client" do
+  test 'should destroy client' do
     assert_difference('Client.count', -1) do
       delete client_url(@client)
     end
