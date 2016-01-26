@@ -30,7 +30,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
       post projects_url, params: {
         project: {
           description: @project.description, name: @project.name,
-          passphrase: @project.passphrase
+          passphrase: @project.passphrase, organization_id: @project.organization_id,
+          key: @project.key
         }
       }
     end
@@ -50,9 +51,16 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test 'should update project' do
     patch project_url(@project), params: {
       project: {
-        description: @project.description, name: @project.name
+        description: @project.description, name: @project.name,
+        passphrase: @project.passphrase, organization_id: @project.organization_id,
+        key: @project.key
       }
     }
+
+    project = Project.all.last
+
+    assert project.ca_private_key
+    assert project.ca_public_key
     assert_response 200
   end
 

@@ -2,7 +2,9 @@
 
 one:
   id: 1
+  organization_id: 1
   name: Production Machines
+  key: productionmachines
   description: The production machines project
   passphrase: Foobar
   ca_private_key:
@@ -62,7 +64,9 @@ one:
 
 two:
   id: 2
+  organization_id: 2
   name: QA Machines
+  key: qamachines
   description: The qa machines project
   passphrase: Foobar
   ca_private_key:

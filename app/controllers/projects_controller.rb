@@ -16,7 +16,13 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(name: project_params[:name],
+      description: project_params[:description],
+      passphrase: project_params[:passphrase],
+      organization_id: project_params[:organization_id],
+      key: project_params[:key]
+    )
+    @project.organization = Organization.find_by_key(project_params[:organization]) if project_params[:organization]
 
     if @project.save
       render json: @project, status: :created, location: @project
@@ -48,6 +54,6 @@ class ProjectsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def project_params
-    params.require(:project).permit(:name, :description, :passphrase)
+    params.require(:project).permit(:name, :description, :passphrase, :organization_id, :organization, :key)
   end
 end

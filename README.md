@@ -51,6 +51,10 @@ Not recommended at this time
     # edit the database migration if necessary
     bundle exec b rake db:migrate
 
+#### Generate a database migration
+
+    bundle exec ./bin/rails g migration AddColumnToTable <column>:<type>
+
 ## Contributing
 
 - Open an issue (please note if you'll be working on it or need assistance)

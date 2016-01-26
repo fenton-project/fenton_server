@@ -2,19 +2,26 @@
 class Project < ApplicationRecord
   # http://guides.rubyonrails.org/association_basics.html
   has_many :certificates, dependent: :destroy
+  belongs_to :organization
 
   # http://edgeguides.rubyonrails.org/active_record_validations.html
-  validates :name, :description, :passphrase, presence: true
+  validates :name, :key, :description, :passphrase, :organization_id,
+    presence: true
 
-  validates :name, format: { with: /\A([a-zA-Z]|\s)+\z/,
-                             message: 'only allows letters and spaces' }
+  validates :name, format: { with: %r{\A([a-zA-Z]|\s|\d)+\z},
+                             message: 'only allows letters, numbers & spaces' }
+
+  validates :key, format: { with: %r{\A([a-z]|\d)+\z},
+                             message: 'only allows letters and numbers' }
 
   before_save :create_ca_key, on: [:create]
 
+  before_validation :downcase_key, on: [:create, :update]
+
   protected
 
-  def key
-    name.downcase.gsub(/\s+/, '_').to_s
+  def downcase_key
+    self.key = key.downcase
   end
 
   def create_ca_key

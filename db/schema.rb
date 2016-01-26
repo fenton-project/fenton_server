@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124175056) do
+ActiveRecord::Schema.define(version: 20160126043914) do
 
   create_table "certificates", force: :cascade do |t|
     t.text     "certificate", null: false
@@ -28,14 +28,23 @@ ActiveRecord::Schema.define(version: 20160124175056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "key",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.string   "description",    null: false
-    t.string   "passphrase",     null: false
-    t.text     "ca_private_key", null: false
-    t.text     "ca_public_key",  null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "name",            null: false
+    t.string   "description",     null: false
+    t.string   "passphrase",      null: false
+    t.text     "ca_private_key",  null: false
+    t.text     "ca_public_key",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id", null: false
+    t.string   "key",             null: false
   end
 
 end

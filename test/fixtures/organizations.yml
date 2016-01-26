@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: My Foobar
+  key: my_foobar
+
+two:
+  id: 2
+  name: My BarFooz
+  key: my_barfooz
