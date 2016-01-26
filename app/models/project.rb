@@ -1,5 +1,8 @@
 # A project is a set of machines that all use the same authentication CA
 class Project < ApplicationRecord
+  # http://guides.rubyonrails.org/association_basics.html
+  has_many :certificates, dependent: :destroy
+
   # http://edgeguides.rubyonrails.org/active_record_validations.html
   validates :name, :description, :passphrase, presence: true
 

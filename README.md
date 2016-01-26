@@ -23,7 +23,7 @@ Not recommended at this time
 
 #### System dependencies
 
-  None
+  ssh-keygen 5.9+
 
 #### Configuration
 
@@ -36,6 +36,10 @@ Not recommended at this time
 #### How to run the test suite
 
     bundle exec rake test
+
+#### Generate integration tests
+
+    bundle exec ./bin/rails generate integration_test <name>
 
 #### Services (job queues, cache servers, search engines, etc.)
 

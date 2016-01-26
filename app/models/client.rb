@@ -1,5 +1,8 @@
 # A client is a single entity that authenticates to a machine
 class Client < ApplicationRecord
+  # http://guides.rubyonrails.org/association_basics.html
+  has_many :certificates, dependent: :destroy
+
   # http://edgeguides.rubyonrails.org/active_record_validations.html
   validates :name, :public_key, presence: true
 
