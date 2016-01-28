@@ -1,3 +1,4 @@
+# A restful interface to the organization model
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :update, :destroy]
 

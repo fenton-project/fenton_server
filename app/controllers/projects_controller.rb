@@ -22,7 +22,8 @@ class ProjectsController < ApplicationController
                            organization_id: project_params[:organization_id],
                            key: project_params[:key]
                           )
-    @project.organization = Organization.find_by_key(project_params[:organization]) if project_params[:organization]
+    @project.organization = Organization.find_by_key(
+      project_params[:organization]) if project_params[:organization]
 
     if @project.save
       render json: @project, status: :created, location: @project
@@ -54,6 +55,7 @@ class ProjectsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def project_params
-    params.require(:project).permit(:name, :description, :passphrase, :organization_id, :organization, :key)
+    params.require(:project).permit(:name, :description, :passphrase,
+                                    :organization_id, :organization, :key)
   end
 end

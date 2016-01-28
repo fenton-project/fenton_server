@@ -33,6 +33,8 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
+  # TODO: test creation with client and project name
+
   test 'should show certificate' do
     get certificate_url(@certificate)
     assert_response :success

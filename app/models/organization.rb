@@ -8,5 +8,6 @@ class Organization < ApplicationRecord
   validates :name, :key, presence: true
 
   validates :name, format: { with: %r{\A([a-zA-Z]|\s|\d)+\z},
-                             message: 'only allows letters, numbers and spaces' }
+                             message: 'only allows letters, ' \
+                             'numbers and spaces' }
 end

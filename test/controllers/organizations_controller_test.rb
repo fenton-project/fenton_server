@@ -6,7 +6,8 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should route to organization list' do
-    assert_routing '/organizations', controller: 'organizations', action: 'index'
+    assert_routing '/organizations', controller: 'organizations',
+                                     action: 'index'
   end
 
   test 'should route to a organization' do

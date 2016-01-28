@@ -30,7 +30,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
       post projects_url, params: {
         project: {
           description: @project.description, name: @project.name,
-          passphrase: @project.passphrase, organization_id: @project.organization_id,
+          passphrase: @project.passphrase,
+          organization_id: @project.organization_id,
           key: @project.key
         }
       }
@@ -43,6 +44,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
+  # TODO: test creation with organization
+
   test 'should show project' do
     get project_url(@project)
     assert_response :success
@@ -52,7 +55,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     patch project_url(@project), params: {
       project: {
         description: @project.description, name: @project.name,
-        passphrase: @project.passphrase, organization_id: @project.organization_id,
+        passphrase: @project.passphrase,
+        organization_id: @project.organization_id,
         key: @project.key
       }
     }
