@@ -8,8 +8,8 @@ class CertificateTest < ActiveSupport::TestCase
   end
 
   test 'should be a certificate' do
-    assert_equal 1, @certificate.client_id
-    assert_equal 1, @certificate.project_id
+    assert @certificate.client_id
+    assert @certificate.project_id
   end
 
   test 'should not save certificate without a client_id' do

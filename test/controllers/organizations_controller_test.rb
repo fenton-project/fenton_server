@@ -11,15 +11,15 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should route to a organization' do
     assert_routing '/organizations/1', controller: 'organizations',
-                                  action: 'show', id: '1'
+                                       action: 'show', id: '1'
   end
 
-  test "should get index" do
+  test 'should get index' do
     get organizations_url
     assert_response :success
   end
 
-  test "should create organization" do
+  test 'should create organization' do
     assert_difference('Organization.count') do
       post organizations_url, params: {
         organization: {
@@ -32,12 +32,12 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show organization" do
+  test 'should show organization' do
     get organization_url(@organization)
     assert_response :success
   end
 
-  test "should update organization" do
+  test 'should update organization' do
     patch organization_url(@organization), params: {
       organization: {
         name: @organization.name,
@@ -47,7 +47,7 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   end
 
-  test "should destroy organization" do
+  test 'should destroy organization' do
     assert_difference('Organization.count', -1) do
       delete organization_url(@organization)
     end

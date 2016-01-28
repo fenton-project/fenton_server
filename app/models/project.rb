@@ -6,13 +6,13 @@ class Project < ApplicationRecord
 
   # http://edgeguides.rubyonrails.org/active_record_validations.html
   validates :name, :key, :description, :passphrase, :organization_id,
-    presence: true
+            presence: true
 
   validates :name, format: { with: %r{\A([a-zA-Z]|\s|\d)+\z},
                              message: 'only allows letters, numbers & spaces' }
 
   validates :key, format: { with: %r{\A([a-z]|\d)+\z},
-                             message: 'only allows letters and numbers' }
+                            message: 'only allows letters and numbers' }
 
   before_save :create_ca_key, on: [:create]
 

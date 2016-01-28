@@ -11,7 +11,7 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal 'Production Machines', @project.name
     assert_equal 'The production machines project', @project.description
     assert_equal 'Foobar', @project.passphrase
-    assert_equal 1, @project.organization_id
+    assert @project.organization_id
     assert_equal 'productionmachines', @project.key
   end
 
@@ -41,18 +41,18 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test 'should not save project with name having a special character' do
-    @project.name = "My Foobar--"
+    @project.name = 'My Foobar--'
     assert_not @project.save
   end
 
   test 'should not save project with key having a space' do
-    @project.key = "My Foobar--"
+    @project.key = 'My Foobar--'
     assert_not @project.save
   end
 
   test 'should save project with key being all lowercase' do
-    @project.key = "MyFoobar"
+    @project.key = 'MyFoobar'
     assert @project.save
-    assert_equal "myfoobar", @project.key
+    assert_equal 'myfoobar', @project.key
   end
 end

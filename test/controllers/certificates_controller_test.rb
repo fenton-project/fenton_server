@@ -11,15 +11,15 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should route to a certificate' do
     assert_routing '/certificates/1', controller: 'certificates',
-                                 action: 'show', id: '1'
+                                      action: 'show', id: '1'
   end
 
-  test "should get index" do
+  test 'should get index' do
     get certificates_url
     assert_response :success
   end
 
-  test "should create certificate" do
+  test 'should create certificate' do
     assert_difference('Certificate.count') do
       post certificates_url, params: {
         certificate: {
@@ -33,12 +33,12 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show certificate" do
+  test 'should show certificate' do
     get certificate_url(@certificate)
     assert_response :success
   end
 
-  test "should update certificate" do
+  test 'should update certificate' do
     patch certificate_url(@certificate), params: {
       certificate: {
         certificate: @certificate.certificate,
@@ -49,7 +49,7 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   end
 
-  test "should destroy certificate" do
+  test 'should destroy certificate' do
     assert_difference('Certificate.count', -1) do
       delete certificate_url(@certificate)
     end

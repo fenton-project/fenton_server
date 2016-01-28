@@ -10,7 +10,8 @@ class OrganizationTest < ActiveSupport::TestCase
   test 'should be a organization' do
     assert_equal 'My Foobar', @organization.name
     assert_equal 'my_foobar', @organization.key
-    assert_equal [1], @organization.project_ids
+    assert_equal 1, @organization.projects.count
+    assert_equal 1, @organization.clients.count
   end
 
   test 'should not save organization without a name' do

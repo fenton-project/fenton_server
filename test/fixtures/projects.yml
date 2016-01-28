@@ -1,8 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  organization_id: 1
+  organization: one
   name: Production Machines
   key: productionmachines
   description: The production machines project
@@ -63,8 +62,7 @@ one:
   ca_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDb0bHdXKrO5VKBa8+LkhVBVafuZipyyQAF9UaIV9Dv4WzednjeBlBnvmEvxec3aSJ7b2AGVqRdO4Sjs8wQMARXv7H/lvXIpBu/+HhNjGqpBLoxrvOj1VO+6hOc7RvaJNQPtQpl5QNvrSeaU2pJ0XZZ+n3DK+ryeTKo1P9o/rK6k9bEo/VBZkoNLT1Ae74Qu3WPXZx4DNk6ez3YZAiL0mSS6WRLRADX9+sKuZH2STsCIyQIPRv5G7gDZBnV/WSyTaAflyhioTb4LJrzoJ1pTSPoDgjMgNiQNe3ZrZplUkoONXv7DOaD/KyRkzRgsZcXQTyhkraSyqyPlLHlY+934n6pk7YcnxtH+r2Ts41VE7zbm/A+2n++E1oq5U4DWGW7/hTwjBMquvsr5v/pkFveaPNRHABcabId7LOwAkVCAUyWjOK4FHVjAhmebCxk0eE1h8cpJyVzmYaE5RbcDd/tQGibSK6jnXcsVRUExOODF6JVkDxlZd6JAuWx2zww98X0gyHa58/14Q1Nh+mbU6U/EVL/bBNxub0zEc/8brznwW0+cT6hagFnGCyvlzREz2OK5MO4WSg9NgtDZx4Bj6GEx+QC7x1PsDuN9obuRh9EkHMKN75fdIapTIeLvY65DgFIosC5t0gQKdd07gLKZJb0ZHvXYdKS4uqD0ChQRPu8xhPYXw== foobar@fenton
 
 two:
-  id: 2
-  organization_id: 2
+  organization: two
   name: QA Machines
   key: qamachines
   description: The qa machines project

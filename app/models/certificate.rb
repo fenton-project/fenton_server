@@ -12,28 +12,34 @@ class Certificate < ApplicationRecord
   protected
 
   def sign_public_key
+    project_private_key_file = write_key_file(project.ca_private_key)
+    client_public_key_file = write_key_file(client.public_key)
+    self.certificate = run_signing(project_private_key_file, project.passphrase, client_public_key_file, ['ubuntu'])
+  rescue => e
+    raise e.message
+  ensure
     begin
-      project_private_key_file = write_key_file(project.ca_private_key)
-      client_public_key_file = write_key_file(client.public_key)
-      self.certificate = run_signing(project_private_key_file,project.passphrase,client_public_key_file,['ubuntu'])
-    rescue => e
-      raise e.message
-    ensure
-      FileUtils.rm_r(project_private_key_file) rescue nil
-      FileUtils.rm_r(client_public_key_file) rescue nil
+      FileUtils.rm_r(project_private_key_file)
+    rescue
+      nil
+    end
+    begin
+      FileUtils.rm_r(client_public_key_file)
+    rescue
+      nil
     end
   end
 
-  def run_signing(project_private_key_file,project_private_key_passphrase,client_public_key_file,principals)
+  def run_signing(project_private_key_file, project_private_key_passphrase, client_public_key_file, principals)
     epoch = Time.now.to_i
     ssh_keygen = Mixlib::ShellOut.new(
       "ssh-keygen -s #{project_private_key_file} " \
       "-P '#{project_private_key_passphrase}' -I #{epoch} " \
       "-z #{epoch} -n #{principals.join(',')} #{client_public_key_file} " \
-      "2>&1"
+      '2>&1'
     ).run_command
 
-    read_certificate_file((ssh_keygen.stdout.gsub('Signed user key ','').scan %r{.*\.pub}).first) if ssh_keygen.status.success?
+    read_certificate_file((ssh_keygen.stdout.gsub('Signed user key ', '').scan %r{.*\.pub}).first) if ssh_keygen.status.success?
   end
 
   def read_certificate_file(file_path)
