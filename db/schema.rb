@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128051359) do
+ActiveRecord::Schema.define(version: 20160220234112) do
 
   create_table "certificates", force: :cascade do |t|
     t.text     "certificate", null: false
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20160128051359) do
     t.text     "public_key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "username"
+    t.string   "email"
   end
 
   create_table "clients_organizations", id: false, force: :cascade do |t|

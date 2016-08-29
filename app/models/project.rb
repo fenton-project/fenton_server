@@ -18,6 +18,11 @@ class Project < ApplicationRecord
 
   before_validation :downcase_key, on: [:create, :update]
 
+  def populate_organization(organization_key)
+    self.organization = Organization.find_by_key(organization_key) \
+    if organization_key
+  end
+
   protected
 
   def downcase_key

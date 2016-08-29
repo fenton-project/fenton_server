@@ -16,14 +16,12 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.new(name: project_params[:name],
-                           description: project_params[:description],
-                           passphrase: project_params[:passphrase],
-                           organization_id: project_params[:organization_id],
-                           key: project_params[:key]
-                          )
-    @project.organization = Organization.find_by_key(
-      project_params[:organization]) if project_params[:organization]
+    @project = Project.new(
+      name: project_params[:name], description: project_params[:description],
+      passphrase: project_params[:passphrase], key: project_params[:key],
+      organization_id: project_params[:organization_id]
+    )
+    @project.populate_organization(project_params[:organization])
 
     if @project.save
       render json: @project, status: :created, location: @project

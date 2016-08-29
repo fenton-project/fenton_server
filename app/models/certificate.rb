@@ -9,6 +9,14 @@ class Certificate < ApplicationRecord
 
   before_save :sign_public_key, on: [:create]
 
+  def populate_project(project_key)
+    self.project = Project.find_by_key(project_key) if project_key
+  end
+
+  def populate_client(client_username)
+    self.client = Client.find_by_username(client_username) if client_username
+  end
+
   protected
 
   def sign_public_key
@@ -16,7 +24,7 @@ class Certificate < ApplicationRecord
     client_public_key_file = write_key_file(client.public_key)
     self.certificate =
       run_signing(project_private_key_file, project.passphrase,
-                  client_public_key_file, ['ubuntu'])
+                  client_public_key_file, ['vagrant'])
   rescue => e
     raise e.message
   ensure
@@ -27,11 +35,11 @@ class Certificate < ApplicationRecord
   def run_signing(project_private_key_file, project_private_key_passphrase,
                   client_public_key_file, principals)
     epoch = Time.now.to_i
-    ssh_keygen = Mixlib::ShellOut.new(
-      "ssh-keygen -s #{project_private_key_file} " \
+    command = "ssh-keygen -s #{project_private_key_file} " \
       "-P '#{project_private_key_passphrase}' -I #{epoch} " \
       "-z #{epoch} -n #{principals.join(',')} #{client_public_key_file} " \
-      '2>&1').run_command
+      '2>&1'
+    ssh_keygen = Mixlib::ShellOut.new(command).run_command
 
     read_certificate_file(
       (ssh_keygen.stdout.gsub('Signed user key ', '').scan %r{.*\.pub}).first
@@ -45,7 +53,7 @@ class Certificate < ApplicationRecord
   def write_key_file(content)
     file_path = "tmp/keys/#{SecureRandom.hex(16)}"
     File.write(file_path, content)
-    File.chmod(0600, file_path)
+    File.chmod(0o600, file_path)
     file_path
   end
 end

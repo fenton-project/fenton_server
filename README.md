@@ -29,9 +29,10 @@ Not recommended at this time
 
   None
 
-#### Database creation & initialization
+#### Database deletion, creation & initialization
 
-    bundle exec rake db:setup
+    bundle exec ./bin/rails db:environment:set RAILS_ENV=development
+    bundle exec rake db:drop && bundle exec rake db:setup
 
 #### How to run the test suite
 

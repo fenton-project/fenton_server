@@ -21,4 +21,14 @@ class ClientTest < ActiveSupport::TestCase
     @client.public_key = nil
     assert_not @client.save
   end
+
+  test 'should not save client without a username' do
+    @client.username = nil
+    assert_not @client.save
+  end
+
+  test 'should not save client without an email' do
+    @client.email = nil
+    assert_not @client.save
+  end
 end

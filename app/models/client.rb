@@ -6,10 +6,13 @@ class Client < ApplicationRecord
   has_many :projects, through: :organizations
 
   # http://edgeguides.rubyonrails.org/active_record_validations.html
-  validates :name, :public_key, presence: true
+  validates :name, :username, :email, :public_key, presence: true
 
   validates :name, format: { with: %r{\A([a-zA-Z]|\s)+\z},
                              message: 'only allows letters and spaces' }
+
+  validates :username, format: { with: %r{\A([a-zA-Z]|[0-9])+\z},
+                                 message: 'only allows letters and numbers' }
 
   before_save :validate_public_key, on: [:create]
 

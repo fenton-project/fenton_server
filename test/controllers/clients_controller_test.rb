@@ -23,7 +23,9 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Client.count') do
       post clients_url, params: {
         client: {
+          username: @client.username,
           name: @client.name,
+          email: @client.email,
           public_key: @client.public_key
         }
       }
@@ -40,7 +42,9 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test 'should update client' do
     patch client_url(@client), params: {
       client: {
+        username: @client.username,
         name: @client.name,
+        email: @client.email,
         public_key: @client.public_key
       }
     }

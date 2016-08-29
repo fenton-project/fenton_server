@@ -23,7 +23,6 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Certificate.count') do
       post certificates_url, params: {
         certificate: {
-          certificate: @certificate.certificate,
           client_id: @certificate.client_id,
           project_id: @certificate.project_id
         }
@@ -43,7 +42,6 @@ class CertificatesControllerTest < ActionDispatch::IntegrationTest
   test 'should update certificate' do
     patch certificate_url(@certificate), params: {
       certificate: {
-        certificate: @certificate.certificate,
         client_id: @certificate.client_id,
         project_id: @certificate.project_id
       }

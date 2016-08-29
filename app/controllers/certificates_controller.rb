@@ -17,13 +17,11 @@ class CertificatesController < ApplicationController
   # POST /certificates
   def create
     @certificate = Certificate.new(
-      certificate: certificate_params[:certificate],
       client_id: certificate_params[:client_id],
-      project_id: certificate_params[:project_id])
-    @certificate.project = Project.find_by_name(
-      certificate_params[:project]) if certificate_params[:project]
-    @certificate.client = Client.find_by_name(
-      certificate_params[:client]) if certificate_params[:client]
+      project_id: certificate_params[:project_id]
+    )
+    @certificate.populate_project(certificate_params[:project])
+    @certificate.populate_client(certificate_params[:client])
 
     if @certificate.save
       render json: @certificate, status: :created, location: @certificate
@@ -55,7 +53,7 @@ class CertificatesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def certificate_params
-    params.require(:certificate).permit(:certificate, :client_id,
-                                        :project_id, :client, :project)
+    params.require(:certificate).permit(:client_id, :project_id,
+                                        :client, :project)
   end
 end
