@@ -12,49 +12,61 @@ Not recommended at this time
 
 #### Getting started
 
-    git clone git@github.com:fenton-project/fenton_server.git
-    cd fenton_server
-    bundle install
-    bundle exec rackup
+```sh
+git clone git@github.com:fenton-project/fenton_server.git
+cd fenton_server
+bundle install
+bundle exec rackup
+```
 
 #### Ruby version
 
-  See [Gemfile](Gemfile)
+See [Gemfile](Gemfile)
 
 #### System dependencies
 
-  ssh-keygen 5.9+
+ssh-keygen 5.9+
 
 #### Configuration
 
-  None
+None
 
 #### Database deletion, creation & initialization
 
-    bundle exec ./bin/rails db:environment:set RAILS_ENV=development
-    bundle exec rake db:drop && bundle exec rake db:setup
+```sh
+bundle exec ./bin/rails db:environment:set RAILS_ENV=development
+bundle exec rake db:drop && bundle exec rake db:setup
+```
 
 #### How to run the test suite
 
-    bundle exec rake test
+```sh
+bundle exec rake test
+```
 
 #### Generate integration tests
 
-    bundle exec ./bin/rails generate integration_test <name>
+```sh
+bundle exec ./bin/rails generate integration_test <name>
+```
 
 #### Services (job queues, cache servers, search engines, etc.)
 
-  None
+None
 
 #### Generate scaffolds
 
-    bundle exec ./bin/rails g scaffold <name> <column>:<type> --api
-    # edit the database migration if necessary
-    bundle exec b rake db:migrate
+```sh
+bundle exec ./bin/rails g scaffold <name> <column>:<type> --api
+# edit the database migration if necessary
+bundle exec b rake db:migrate
+```
 
 #### Generate a database migration
 
-    bundle exec ./bin/rails g migration AddColumnToTable <column>:<type>
+```sh
+bundle exec ./bin/rails g migration AddColumnToTable <column>:<type>
+```
 
 ## Contributing
 
@@ -67,11 +79,11 @@ Not recommended at this time
 
 #### Author
 
-  Nick Willever (<nickwillever@gmail.com>)
+Nick Willever (<nickwillever@gmail.com>)
 
 #### Copyright
 
-  Copyright (c) 2013-2016 Nick Willever
+Copyright (c) 2013-2016 Nick Willever
 
 #### License
 
