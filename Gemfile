@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails'
-gem 'sprockets-rails'
+gem 'rails', '>= 5.2.4.4'
+gem 'sprockets-rails', '>= 3.2.0'
 gem 'arel'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '>= 0.10.3'
 gem 'json_schema'
 
 gem 'sshkey'
