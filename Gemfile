@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails'
+gem 'rails', '>= 6.0.3.5'
 gem 'sprockets-rails'
 gem 'arel'
 
