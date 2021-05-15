@@ -17,7 +17,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rubocop', require: false
   gem 'bundler-audit'
-  gem 'puma'
+  gem 'puma', '>= 4.3.8'
 end
 
 group :development do
