@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails'
-gem 'sprockets-rails'
+gem 'rails', '>= 5.0.1'
+gem 'sprockets-rails', '>= 3.2.1'
 gem 'arel'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '>= 0.10.4'
 gem 'json_schema'
 
 gem 'sshkey'
@@ -16,7 +16,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'rubocop', require: false
-  gem 'bundler-audit'
+  gem 'bundler-audit', '>= 0.7.0'
   gem 'puma'
 end
 
